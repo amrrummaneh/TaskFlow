@@ -6,4 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskFlow.DataAccess\TaskFlow.DataAccess.csproj" />
+    <ProjectReference Include="..\TaskFlow.Models\TaskFlow.Models.csproj" />
+    <ProjectReference Include="..\TaskFlow.Utility\TaskFlow.Utility.csproj" />
+  </ItemGroup>
+
 </Project>

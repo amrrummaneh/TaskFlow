@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskFlow.DataAccess.Repository;
 
-namespace TaskFlow.Controllers
+namespace TaskFlow.Web.Controllers
 {
     public class ProjectController : Controller
     {
@@ -17,3 +17,4 @@ namespace TaskFlow.Controllers
         }
     }
 }
+    

@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="TaskFlow.DataAccess/TaskFlow.DataAccess.csproj" />
+  <Project Path="TaskFlow.Models/TaskFlow.Models.csproj" />
+  <Project Path="TaskFlow.Utility/TaskFlow.Utility.csproj" />
   <Project Path="TaskFlow/TaskFlow.csproj" />
 </Solution>

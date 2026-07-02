@@ -13,5 +13,6 @@ namespace TaskFlow.DataAccess.Repository
         T Get(Expression<Func<T, bool>> predicate);
         void Add(T entity);
         void Remove(T entity);
+        void Update(T entity);
     }
 }

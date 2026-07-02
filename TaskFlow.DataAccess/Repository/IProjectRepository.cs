@@ -9,5 +9,6 @@ namespace TaskFlow.DataAccess.Repository
 {
     public interface IProjectRepository : IRepository<Project>
     {
+
     }
 }

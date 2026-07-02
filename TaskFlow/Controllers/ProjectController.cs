@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskFlow.DataAccess.Repository;
+using TaskFlow.Models;
 
 namespace TaskFlow.Web.Controllers
 {
@@ -15,6 +16,31 @@ namespace TaskFlow.Web.Controllers
             var projects = _unitOfWork.Project.GetAll();
             return View(projects);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Project project)
+        {
+            project.CreatedAt = DateTime.Now;
+            _unitOfWork.Project.Add(project);       
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+        }
+        public IActionResult Edit(int id)
+        {
+            var project = _unitOfWork.Project.Get(p => p.Id == id);
+            return View(project);
+        }
+        [HttpPost]
+        public IActionResult Edit(Project project)
+        {
+            _unitOfWork.Project.Update(project);
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+        }
+
     }
 }
     

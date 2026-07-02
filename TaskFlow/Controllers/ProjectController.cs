@@ -40,6 +40,18 @@ namespace TaskFlow.Web.Controllers
             _unitOfWork.Save();
             return RedirectToAction("Index");
         }
+        public IActionResult Delete(int id)
+        {
+            var project = _unitOfWork.Project.Get(p => p.Id == id);
+            return View(project);
+        }
+        [HttpPost]
+        public IActionResult Delete(Project project)
+        {
+            _unitOfWork.Project.Remove(project);
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+        }
 
     }
 }

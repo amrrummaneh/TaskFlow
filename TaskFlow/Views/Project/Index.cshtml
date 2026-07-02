@@ -1,31 +1,29 @@
 ﻿@model IEnumerable<TaskFlow.Models.Project>
 
 <div class="container mt-4">
-    <h2>Projects</h2>
-    <a asp-action="Create" class="btn btn-primary mb-3">Add Project</a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Projects</h2>
+        <a asp-action="Create" class="btn btn-primary">Add Project</a>
+    </div>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Created At</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var project in Model)
-            {
-                <tr>
-                    <td>@project.Name</td>
-                    <td>@project.Description</td>
-                    <td>@project.CreatedAt</td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@project.Id" class="btn btn-warning btn-sm">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@project.Id" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="row">
+        @foreach (var project in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@project.Name</h5>
+                        <p class="card-text">@project.Description</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <small class="text-muted">@project.CreatedAt.ToString("MMM dd, yyyy")</small>
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@project.Id" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@project.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

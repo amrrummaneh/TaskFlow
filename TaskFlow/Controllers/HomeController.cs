@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TaskFlow.Models;
 
-namespace TaskFlow.Controllers
+namespace TaskFlow.Web.Controllers
 {
     public class HomeController : Controller
     {

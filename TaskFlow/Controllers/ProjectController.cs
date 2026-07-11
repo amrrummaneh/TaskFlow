@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TaskFlow.DataAccess.Repository;
 using TaskFlow.Models;
+using TaskFlow.Utility;
 
 namespace TaskFlow.Web.Controllers
 {
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProjectController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

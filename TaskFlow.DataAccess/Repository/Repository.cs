@@ -19,13 +19,33 @@ namespace TaskFlow.DataAccess.Repository
             _db = db;
             this.dbSet = _db.Set<T>();
         }
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(string includeProperties = null)
         {
-            return dbSet.ToList();
+            IQueryable<T> query = dbSet;
+
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var prop in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(prop);
+                }
+            }
+
+            return query.ToList();
         }
-        public T Get(Expression<Func<T, bool>> predicate)
+        public T Get(Expression<Func<T, bool>> predicate, string includeProperties = null)
         {
-            return dbSet.Where(predicate).FirstOrDefault();
+            IQueryable<T> query = dbSet;
+
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var prop in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(prop);
+                }
+            }
+
+            return query.Where(predicate).FirstOrDefault();
         }
         public void Add(T entity)
         {

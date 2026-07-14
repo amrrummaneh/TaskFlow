@@ -17,5 +17,6 @@ namespace TaskFlow.DataAccess.Data
         }
 
         public DbSet<Project> Projects { get; set; }
+        public DbSet<TaskItem> TaskItems { get; set; }
     }
 }

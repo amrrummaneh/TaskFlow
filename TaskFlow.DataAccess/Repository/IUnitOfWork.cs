@@ -9,6 +9,7 @@ namespace TaskFlow.DataAccess.Repository
     public interface IUnitOfWork
     {
         IProjectRepository Project { get; }
+        ITaskItemRepository TaskItem { get; }
         void Save();
     }
 }

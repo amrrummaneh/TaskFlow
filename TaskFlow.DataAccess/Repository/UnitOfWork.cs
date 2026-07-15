@@ -12,12 +12,14 @@ namespace TaskFlow.DataAccess.Repository
         private readonly ApplicationDbContext _db;
         public IProjectRepository Project { get; private set; }
         public ITaskItemRepository TaskItem { get; private set; }
+        public ICommentRepository Comment { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Project = new ProjectRepository(_db);
             TaskItem = new TaskItemRepository(_db);
+            Comment = new CommentRepository(_db);
         }
 
         public void Save()

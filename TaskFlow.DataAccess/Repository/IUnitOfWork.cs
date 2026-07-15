@@ -10,6 +10,7 @@ namespace TaskFlow.DataAccess.Repository
     {
         IProjectRepository Project { get; }
         ITaskItemRepository TaskItem { get; }
+        ICommentRepository Comment { get; }
         void Save();
     }
 }

@@ -1,0 +1,31 @@
+﻿@model TaskFlow.Models.TaskItem
+
+<div class="container mt-4">
+    <h2>Delete Task</h2>
+    <input asp-for="Id" type="hidden" />
+
+    <form asp-action="Delete" method="post">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" disabled class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Project</label>
+            <input value="@Model.Project?.Name" disabled class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Assigned To</label>
+            <input value="@Model.AssignedUser?.Name" disabled class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </form>
+</div>

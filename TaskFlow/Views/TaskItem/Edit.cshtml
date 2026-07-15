@@ -1,0 +1,57 @@
+﻿@model TaskFlow.Models.TaskItem
+
+<div class="container mt-4">
+    <h2>Edit Task</h2>
+    <input asp-for="Id" type="hidden" />
+
+    <form asp-action="Edit" method="post">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Priority" class="form-label"></label>
+            <select asp-for="Priority" class="form-select">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Status" class="form-label"></label>
+            <select asp-for="Status" class="form-select">
+                <option value="Pending">Pending</option>
+                <option value="InProgress">InProgress</option>
+                <option value="Done">Done</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DueDate" class="form-label"></label>
+            <input asp-for="DueDate" type="date" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ProjectId" class="form-label">Project</label>
+            <select asp-for="ProjectId" asp-items="@ViewBag.ProjectList" class="form-select">
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AssignedUserId" class="form-label">Assigned To</label>
+            <select asp-for="AssignedUserId" asp-items="@ViewBag.UserList" class="form-select">
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </form>
+</div>

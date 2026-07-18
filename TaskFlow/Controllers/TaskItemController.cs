@@ -63,6 +63,18 @@ namespace TaskFlow.Web.Controllers
             _unitOfWork.Save();
             return RedirectToAction("Index");
         }
+        public IActionResult Details(int id)
+        {
+            var taskItem = _unitOfWork.TaskItem.Get(t => t.Id == id, includeProperties: "Project,AssignedUser");
+
+            var comments = _unitOfWork.Comment.GetAll(includeProperties: "Author")
+                .Where(c => c.TaskItemId == id)
+                .OrderBy(c => c.CreatedAt);
+
+            ViewBag.Comments = comments;
+
+            return View(taskItem);
+        }
 
         private void PopulateDropdowns()
         {

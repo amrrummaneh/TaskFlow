@@ -7,12 +7,82 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TaskFlow.styles.css" asp-append-version="true" />
+    <style>
+            :root {
+                --tf-beige: #f5f0e6;
+                --tf-beige-soft: #ece3d3;
+                --tf-navy: #1b2a45;
+                --tf-navy-dark: #14203533;
+                --tf-navy-light: #2c3f63;
+                --tf-accent: #c9a66b;
+                --tf-text-muted: #6b6558;
+            }
+
+            body {
+                background-color: var(--tf-beige);
+                color: #2b2b2b;
+            }
+
+            .navbar-taskflow {
+                background-color: var(--tf-navy) !important;
+            }
+
+                .navbar-taskflow .navbar-brand,
+                .navbar-taskflow .nav-link {
+                    color: var(--tf-beige) !important;
+                }
+
+                    .navbar-taskflow .nav-link:hover {
+                        color: var(--tf-accent) !important;
+                    }
+
+                .navbar-taskflow .navbar-toggler {
+                    border-color: var(--tf-beige);
+                }
+
+            .btn-tf-primary {
+                background-color: var(--tf-navy);
+                border-color: var(--tf-navy);
+                color: var(--tf-beige);
+            }
+
+                .btn-tf-primary:hover {
+                    background-color: var(--tf-navy-light);
+                    border-color: var(--tf-navy-light);
+                    color: #fff;
+                }
+
+            .btn-tf-outline {
+                background-color: transparent;
+                border-color: var(--tf-navy);
+                color: var(--tf-navy);
+            }
+
+                .btn-tf-outline:hover {
+                    background-color: var(--tf-navy);
+                    color: var(--tf-beige);
+                }
+
+            footer.footer {
+                background-color: var(--tf-beige-soft);
+                color: var(--tf-text-muted);
+                border-top: 1px solid #ddd3bf !important;
+            }
+
+                footer.footer a {
+                    color: var(--tf-navy);
+                }
+
+            main .container {
+                background-color: #fffdf9;
+            }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-taskflow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TaskFlow</a>
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">TaskFlow</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,24 +90,24 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         @if (User.IsInRole(SD.Role_Admin))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="Index">Projects</a>
+                                <a class="nav-link" asp-area="" asp-controller="Project" asp-action="Index">Projects</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="TaskItem" asp-action="Index">Tasks</a>
+                                <a class="nav-link" asp-area="" asp-controller="TaskItem" asp-action="Index">Tasks</a>
                             </li>
                         }
                         else if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="Index">My Tasks</a>
+                                <a class="nav-link" asp-area="" asp-controller="Member" asp-action="Index">My Tasks</a>
                             </li>
                         }
                     </ul>

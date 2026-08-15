@@ -1,34 +1,26 @@
-﻿@model IEnumerable<TaskFlow.Models.TaskItem>
+﻿@using Microsoft.AspNetCore.Identity
+@using TaskFlow.Models
+@inject SignInManager<ApplicationUser> SignInManager
 
-<div class="container mt-4">
-    <h2>My Tasks</h2>
+@{
+    ViewData["Title"] = "Home";
+}
 
-    <div class="row">
-        @foreach (var task in Model)
-        {
-            <div class="col-md-4 mb-3">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">@task.Title</h5>
-                        <p class="card-text">@task.Description</p>
-                        <p class="mb-1"><strong>Project:</strong> @task.Project?.Name</p>
-                        <p class="mb-1"><strong>Priority:</strong> @task.Priority</p>
-                        <p class="mb-1"><strong>Due:</strong> @task.DueDate.ToString("MMM dd, yyyy")</p>
+<div class="text-center py-5">
+    <h1 class="display-3 fw-bold" style="color: var(--tf-navy);">TaskFlow</h1>
+    <p class="lead mb-4" style="color: var(--tf-text-muted);">Organize projects, assign tasks, and track progress — all in one place.</p>
 
-                        <form asp-action="UpdateStatus" method="post" class="mt-2">
-                            <input type="hidden" name="id" value="@task.Id" />
-                            <select name="status" class="form-select form-select-sm mb-2">
-                                <option value="Pending" selected="@(task.Status == "Pending")">Pending</option>
-                                <option value="InProgress" selected="@(task.Status == "InProgress")">InProgress</option>
-                                <option value="Done" selected="@(task.Status == "Done")">Done</option>
-                            </select>
-                            <button type="submit" class="btn btn-primary btn-sm">Update Status</button>
-                        </form>
-
-                        <a asp-controller="TaskItem" asp-action="Details" asp-route-id="@task.Id" class="btn btn-outline-secondary btn-sm mt-2">View Comments</a>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-tf-primary btn-lg me-2">Login</a>
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-tf-outline btn-lg">Register</a>
+    }
+    else if (User.IsInRole(SD.Role_Admin))
+    {
+        <a asp-controller="Project" asp-action="Index" class="btn btn-tf-primary btn-lg">Go to Projects</a>
+    }
+    else
+    {
+        <p style="color: var(--tf-text-muted);">Head to your dashboard once it's ready.</p>
+    }
 </div>

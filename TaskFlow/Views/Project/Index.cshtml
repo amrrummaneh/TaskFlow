@@ -2,24 +2,30 @@
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Projects</h2>
-        <a asp-action="Create" class="btn btn-primary">Add Project</a>
+        <h2 style="color: var(--tf-navy);"><i class="bi bi-kanban me-2"></i>Projects</h2>
+        <a asp-action="Create" class="btn btn-tf-primary">
+            <i class="bi bi-plus-lg me-1"></i>Add Project
+        </a>
     </div>
 
     <div class="row">
         @foreach (var project in Model)
         {
             <div class="col-md-4 mb-3">
-                <div class="card h-100">
+                <div class="card h-100" style="border-color: var(--tf-beige-soft);">
                     <div class="card-body">
-                        <h5 class="card-title">@project.Name</h5>
-                        <p class="card-text">@project.Description</p>
+                        <h5 class="card-title" style="color: var(--tf-navy);">@project.Name</h5>
+                        <p class="card-text" style="color: var(--tf-text-muted);">@project.Description</p>
                     </div>
-                    <div class="card-footer d-flex justify-content-between align-items-center">
-                        <small class="text-muted">@project.CreatedAt.ToString("MMM dd, yyyy")</small>
+                    <div class="card-footer d-flex justify-content-between align-items-center" style="background-color: var(--tf-beige-soft);">
+                        <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>@project.CreatedAt.ToString("MMM dd, yyyy")</small>
                         <div>
-                            <a asp-action="Edit" asp-route-id="@project.Id" class="btn btn-warning btn-sm">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@project.Id" class="btn btn-danger btn-sm">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@project.Id" class="btn btn-tf-outline btn-sm">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@project.Id" class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-trash3"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 ﻿@model TaskFlow.Models.Project
 
 <div class="container mt-4">
-    <h2>Edit Project</h2>
+    <h2 style="color: var(--tf-navy);"><i class="bi bi-pencil-square me-2"></i>Edit Project</h2>
     <input asp-for="Id" type="hidden" />
     <form asp-action="Edit" method="post">
         <div class="mb-3">
@@ -12,10 +12,14 @@
 
         <div class="mb-3">
             <label asp-for="Description" class="form-label"></label>
-            <textarea asp-for="Description"  class="form-control" rows="4"></textarea>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-        <a asp-action="Index" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-tf-primary">
+            <i class="bi bi-save me-1"></i>Save Changes
+        </button>
+        <a asp-action="Index" class="btn btn-tf-outline">
+            <i class="bi bi-arrow-left me-1"></i>Back
+        </a>
     </form>
 </div>

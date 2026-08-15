@@ -1,7 +1,7 @@
 ﻿@model TaskFlow.Models.TaskItem
 
 <div class="container mt-4">
-    <h2>Create Task</h2>
+    <h2 style="color: var(--tf-navy);"><i class="bi bi-plus-circle me-2"></i>Create Task</h2>
 
     <form asp-action="Create" method="post">
         <div class="mb-3">
@@ -52,7 +52,11 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create</button>
-        <a asp-action="Index" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-tf-primary">
+            <i class="bi bi-check-lg me-1"></i>Create
+        </button>
+        <a asp-action="Index" class="btn btn-tf-outline">
+            <i class="bi bi-arrow-left me-1"></i>Back
+        </a>
     </form>
 </div>

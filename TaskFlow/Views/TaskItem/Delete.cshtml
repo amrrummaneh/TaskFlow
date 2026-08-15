@@ -1,7 +1,7 @@
 ﻿@model TaskFlow.Models.TaskItem
 
 <div class="container mt-4">
-    <h2>Delete Task</h2>
+    <h2 style="color: var(--tf-navy);"><i class="bi bi-exclamation-triangle me-2"></i>Delete Task</h2>
     <input asp-for="Id" type="hidden" />
 
     <form asp-action="Delete" method="post">
@@ -25,7 +25,11 @@
             <input value="@Model.AssignedUser?.Name" disabled class="form-control" />
         </div>
 
-        <button type="submit" class="btn btn-danger">Delete</button>
-        <a asp-action="Index" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash3 me-1"></i>Delete
+        </button>
+        <a asp-action="Index" class="btn btn-tf-outline">
+            <i class="bi bi-arrow-left me-1"></i>Back
+        </a>
     </form>
 </div>
